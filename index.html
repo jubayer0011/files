@@ -10,61 +10,87 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #fff;
+            color: #f8fafc;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            padding: 30px;
-            border-radius: 24px;
+        .download-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            padding: 35px;
+            border-radius: 28px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
             width: 90%;
-            max-width: 380px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .header-title {
-            font-size: 1.2rem;
-            color: #aaa;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .file-info-box {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 15px;
-            padding: 20px;
+        .brand-section {
             margin-bottom: 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
         }
 
-        .file-name-container {
-            display: flex;
+        .brand-name {
+            font-size: 1rem;
+            color: #38bdf8;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Me Button Style */
+        .contact-btn {
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
+            gap: 6px;
+            text-decoration: none;
+            color: #10b981; /* WhatsApp Green */
+            font-size: 0.75rem;
             font-weight: 600;
-            color: #00d2ff;
+            padding: 6px 14px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50px;
+            transition: 0.3s all;
+            background: rgba(16, 185, 129, 0.05);
         }
 
-        .file-size {
-            font-size: 0.9rem;
-            color: #888;
+        .contact-btn:hover {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: #10b981;
+            transform: translateY(-1px);
+        }
+
+        .file-box {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px dashed rgba(56, 189, 248, 0.3);
+        }
+
+        .file-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .file-meta {
+            font-size: 0.8rem;
+            color: #94a3b8;
         }
 
         .download-btn {
@@ -73,50 +99,57 @@
             justify-content: center;
             gap: 10px;
             text-decoration: none;
-            background: #00d2ff;
-            color: #1a1a2e;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            width: 100%;
+            background: #38bdf8;
+            color: #0f172a;
+            padding: 16px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: 0.3s all cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .download-btn:hover {
-            background: #009ec1;
-            transform: translateY(-2px);
+            background: #7dd3fc;
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
         }
 
-        .footer-tag {
-            margin-top: 20px;
-            font-size: 0.75rem;
-            color: #555;
+        .footer-text {
+            margin-top: 25px;
+            font-size: 0.7rem;
+            color: #64748b;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <p class="header-title">Files By Jubayer</p>
+    <div class="download-card">
+        <div class="brand-section">
+            <span class="brand-name">Files By Jubayer</span>
+            
+            <a href="https://wa.me/8801576470915" class="contact-btn" target="_blank">
+                <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i>
+                Contact Me
+            </a>
+        </div>
         
-        <div class="file-info-box">
-            <div class="file-name-container">
-                <i data-lucide="file-text" style="color: #ff4d4d;"></i>
-                <span>Ict practical.pdf</span>
+        <div class="file-box">
+            <div class="file-main">
+                <i data-lucide="file-text" style="color: #ef4444;"></i>
+                <span>ict practical.pdf</span>
             </div>
-            <div class="file-size">সাইজ: 14.7 MB</div>
+            <div class="file-meta">Type: PDF Document | Size: 1.2 MB</div>
         </div>
 
-        <a href="https://drive.google.com/file/d/1Br1cF_kx9008Q9UrVDc5Hi7rP5oOgCYG/view?usp=sharing" class="download-btn">
-            
-            ডাউনলোড করুন
+        <a href="https://raw.githubusercontent.com/jubayer0011/files/main/ict%20practical.pdf" class="download-btn" download>
+            <i data-lucide="download-cloud"></i>
+            Download Now
         </a>
 
-        <div class="footer-tag">Secure Cloud Storage</div>
+        <p class="footer-text">Verified Secure File • 2026</p>
     </div>
 
     <script>
-        // Icons সচল করার জন্য
         lucide.createIcons();
     </script>
 </body>
