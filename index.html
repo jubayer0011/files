@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files By Jubayer</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 380px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-title {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .file-info-box {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-name-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #00d2ff;
+        }
+
+        .file-size {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            background: #00d2ff;
+            color: #1a1a2e;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .download-btn:hover {
+            background: #009ec1;
+            transform: translateY(-2px);
+        }
+
+        .footer-tag {
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <p class="header-title">Files By Jubayer</p>
+        
+        <div class="file-info-box">
+            <div class="file-name-container">
+                <i data-lucide="file-text" style="color: #ff4d4d;"></i>
+                <span>Document_File.pdf</span>
+            </div>
+            <div class="file-size">সাইজ: ২.৫ MB</div>
+        </div>
+
+        <a href="#" class="download-btn">
+            <i data-lucide="download"></i>
+            ডাউনলোড করুন
+        </a>
+
+        <div class="footer-tag">Secure Cloud Storage</div>
+    </div>
+
+    <script>
+        // Icons সচল করার জন্য
+        lucide.createIcons();
+    </script>
+</body>
+</html>
