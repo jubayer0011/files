@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>practicals</title>
+    <style>
+        /* অ্যানিমেশন ম্যাপ */
+        @keyframes fadeout {
+            0% { opacity: 1; visibility: visible; }
+            70% { opacity: 1; visibility: visible; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        .loading {
+            color: white;
+            background-color: black;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            /* শুরুতে ক্লিক ইভেন্ট সচল থাকবে */
+            pointer-events: auto; 
+            animation: fadeout 2s forwards ease-in-out;
+            font-size: clamp(15px, 3vw, 30px);
+        }
+
+        body {
+            background: linear-gradient(to bottom right, rgb(205, 205, 255), rgb(158, 158, 255), rgb(124, 124, 255));
+            /* min-height ব্যবহার করা হয়েছে যাতে স্ক্রল করলেও ব্যাকগ্রাউন্ড ঠিক থাকে */
+            min-height: 100vh;
+            margin: 0px;
+            padding: 0px;
+            background-attachment: fixed;
+        }
+
+        .title {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid black;
+            background: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(226, 253, 226), rgb(186, 255, 186), rgb(116, 255, 116));
+            border-radius: 3px;
+            font-weight: bold;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        table {
+            background-color: white;
+            border: 1px solid black;
+            border-spacing: 0px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        td, th {
+            background-color: white;
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        .content {
+            font-size: clamp(15px, 3vw, 30px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .table-title {
+            font-weight: bold;
+            background: linear-gradient(rgb(166, 236, 219), rgb(146, 250, 146));
+        }
+
+        .warning {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 20px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        p { margin: 0px; padding: 0px; }
+
+        .note {
+            background-color: white;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            font-size: clamp(15px, 2vh, 20px);
+            max-width: 90%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="loading">Making everything ready for you...</div>
+
+    <div class="title"><p>Downlaod practicals pdf, HSC 26 (For Kaliakair Government College students)</p></div>
+    
+    <div class="warning">
+        <p>Please read <a href="#" onclick="alert('something went wrong! link could not be found.'); return false;">this notice</a> before you downlaod or use any of these files.</p>
+    </div>
+
+    <div class="content">
+        <table>
+            <tr class="table-title">
+                <td class="table-title" align="center">Subject name</td>
+                <td class="table-title" align="center">Downlaod link</td>
+            </tr>
+            <tr>
+                <td align="center">Biology first paper</td>
+                <td align="center"><a style="color: gray;">not availabe at this moment.</a></td>
+            </tr>
+            <tr>
+                <td align="center">Biology second paper</td>
+                <td align="center"><a href="https://drive.google.com/file/d/11sP7RgXSf6KUtX7CY327TtFDQw76AEeV/view?usp=sharing">Downlaod</a></td>
+            </tr>
+            <tr>
+                <td align="center">Highermath 1st paper</td>
+                <td align="center"><a href="https://drive.google.com/file/d/1lw6EO45aDxCfeqM0aJZ2XftsKDuD-VjH/view?usp=sharing">Downlaod</a></td>
+            </tr>
+            <tr>
+                <td align="center">Highermath 2nd paper</td>
+                <td align="center"><a href="https://jubayer0011.github.io/files/hm2nd.html">Downlaod</a></td>
+            </tr>
+            <tr>
+                <td align="center">Chemistry 1st paper</td>
+                <td align="center"><a href="https://drive.google.com/file/d/1WjrUPWFUmmATSqtLaGv3K7W-3w-Zogxm/view?usp=sharing">Downlaod</a></td>
+            </tr>
+            <tr>
+                <td align="center">Chemistry 2nd paper</td>
+                <td align="center"><p style="color: gray;">not availabe at this moment.</p></td>
+            </tr>
+            <tr>
+                <td align="center">Physics 1st paper</td>
+                <td align="center" style="display: flex; flex-direction: column;">
+                    <a href="https://drive.google.com/file/d/19njEQ92CWaVP4dFvrLqgzxCpeyeU5Hpo/view?usp=sharing">Downlaod link 1</a>
+                    <a href="https://drive.google.com/drive/folders/1Lav4HLz_zK8feQ6eKrrgyP5wl2_74Ro1?usp=sharing">Download link 2</a>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">Physics 2nd paper</td>
+                <td align="center"><p style="color: gray;">not available at this moment.</p></td>
+            </tr>
+            <tr>
+                <td align="center">Ict first paper</td>
+                <td align="center"><a href="https://jubayer0011.github.io/files/">Downlaod</a></td>
+            </tr>
+        </table>
+
+        <div class="note">
+            <p>
+                রসায়ন ১ম পত্রের পিডিএফ এ চিত্র এবং পরিক্ষার নাম দেওয়া নেই। ওগুলো সবাই <a href="https://drive.google.com/file/d/1dGj_7wn50oFNqTjLXUu-BYSVIJp-rxwk/view?usp=sharing">এখানে ক্লিক করে</a> দেখে নিবা। <br> <hr>
+                হায়ারম্যাথ ২য় পত্রের ইনডেক্স এবং ডেট <a href="https://drive.google.com/open?id=1CA27SFq_gJroND4cvLj6kRVCjkbVT9D_&usp=drive_fs"> এই ছবি</a> অনুযায়ী দিতে হবে।
+            </p>
+        </div>
+    </div>
+</body>
+</html>
