@@ -13,21 +13,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>practicals</title>
     <style>
-        @keyframes fadeout {
-            0% { opacity: 1; visibility: visible; }
-            80% { opacity: 1; visibility: visible; }
-            100% { opacity: 0; visibility: hidden; }
+        /* Modern Opening Animation */
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(10px); }
+            20% { opacity: 1; transform: translateY(0); }
+            80% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-10px); }
         }
 
         .loading {
             color: white;
-            background-color: #000;
+            background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; align-items: center; justify-content: center;
-            z-index: 9999; pointer-events: none; 
-            animation: fadeout 2s forwards ease-in-out;
-            font-size: 20px; font-family: sans-serif;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 9999; 
+            font-family: 'Segoe UI', sans-serif;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s;
+        }
+
+        #loading-text {
+            font-size: clamp(16px, 4.5vw, 22px);
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-align: center;
+            padding: 0 25px;
+            animation: fadeInOut 3s infinite ease-in-out;
+            font-style: italic;
+        }
+
+        .loader-bar {
+            width: 140px;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            margin-top: 25px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .loader-bar::after {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: 100%;
+            background: #2563eb;
+            animation: loadingBar 1.5s infinite ease-in-out;
+        }
+
+        @keyframes loadingBar {
+            0% { left: -40%; }
+            100% { left: 100%; }
         }
 
         body {
@@ -48,44 +84,51 @@
         }
 
         .warning {
-            background: #fff;
-            margin: 10px 20px; padding: 10px;
-            border: 2px solid #ff4d4d;
-            border-radius: 8px;
-            color: #d32f2f; font-size: 14px;
-            text-align: center;
+            background: #ffffff;
+            margin: 15px 20px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            color: #475569;
+            font-size: 14px;
+        }
+
+        .warning-icon {
+            background: #fee2e2;
+            color: #ef4444;
+            width: 24px; height: 24px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-weight: bold;
         }
 
         .content {
             display: flex; flex-direction: column; align-items: center; padding: 10px;
         }
 
-        /* Improved Bold Table */
         table {
             background: white;
             border-collapse: collapse;
             width: 95%; max-width: 800px;
-            border: 3px solid #000; /* Outer Bold Border */
+            border: 3px solid #000; 
             box-shadow: 6px 6px 0px rgba(0,0,0,0.1);
             margin-bottom: 30px;
         }
 
-        th, td {
-            border: 2px solid #000; /* Inner Bold Lines */
-            padding: 12px;
-            text-align: center;
-        }
+        th, td { border: 2px solid #000; padding: 12px; text-align: center; }
 
         .table-title {
             background: #2563eb;
             color: white;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         tr:nth-child(even) { background-color: #f8fafc; }
 
-        /* Buttons */
         a {
             display: inline-block;
             padding: 8px 12px; margin: 4px 0;
@@ -101,9 +144,9 @@
             background: none !important; color: #2563eb !important;
             border: none !important; width: auto !important;
             text-decoration: underline !important; display: inline !important;
+            font-weight: 600;
         }
 
-        /* Modern Popup Modal */
         .modal {
             display: none; position: fixed; z-index: 10000;
             left: 0; top: 0; width: 100%; height: 100%;
@@ -111,16 +154,14 @@
         }
 
         .modal-content {
-            background: white; margin: 15% auto; padding: 20px;
-            border: 3px solid #000; width: 80%; max-width: 500px;
-            border-radius: 12px; position: relative;
+            background: white; margin: 15% auto; padding: 25px;
+            border: 3px solid #000; width: 85%; max-width: 450px;
+            border-radius: 16px; position: relative;
             box-shadow: 10px 10px 0px #2563eb;
+            text-align: center;
         }
 
-        .close-btn {
-            position: absolute; right: 15px; top: 10px;
-            font-size: 24px; cursor: pointer; font-weight: bold;
-        }
+        .close-btn { position: absolute; right: 15px; top: 10px; font-size: 24px; cursor: pointer; color: #94a3b8; }
 
         .note {
             background: white; border: 2px solid #000;
@@ -128,32 +169,58 @@
         }
 
         footer {
-            background: #1a1a1a; color: white;
-            padding: 20px; text-align: center; margin-top: 20px;
+            background: #111827; color: #f3f4f6;
+            padding: 40px 20px; text-align: center;
+            margin-top: 50px; border-top: 5px solid #2563eb;
         }
+
+        .footer-link {
+            background: transparent !important;
+            border: 1px solid #374151 !important;
+            color: #60a5fa !important;
+            padding: 10px 24px !important;
+            width: auto !important;
+            border-radius: 50px !important;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            background: #2563eb !important;
+            color: white !important;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4) !important;
+            transform: translateY(-3px) !important;
+        }
+
+        .copyright { margin-top: 20px; font-size: 11px; opacity: 0.5; }
     </style>
 </head>
 <body>
 
-    <div class="loading">Making everything ready for you...</div>
+    <div class="loading" id="loader">
+        <div id="loading-text">One moment...</div>
+        <div class="loader-bar"></div>
+    </div>
 
     <div class="title">
         Downlaod practicals pdf, HSC 26 (Kaliakair Government College)
     </div>
     
     <div class="warning">
-        <p>⚠️ <b>DISCLAIMER:</b> Please read <a href="javascript:void(0)" class="extra-a" onclick="openModal()">this notice</a> before downloading.</p>
+        <span class="warning-icon">!</span>
+        <span><b>DISCLAIMER:</b> Please read <a href="javascript:void(0)" class="extra-a" onclick="openModal()">this notice</a> before downloading.</span>
     </div>
 
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 style="color: #2563eb; margin-top: 0;">বিশেষ সতর্কবার্তা</h3>
-            <p style="line-height: 1.6; color: #333;">
+            <div style="font-size: 40px; margin-bottom: 10px;">📢</div>
+            <h3 style="color: #1e293b; margin: 0 0 15px 0; font-size: 20px;">বিশেষ সতর্কবার্তা</h3>
+            <p style="line-height: 1.6; color: #64748b; font-size: 15px; margin-bottom: 20px;">
                 এই ওয়েবপেজ এবং এর সাথে জড়িত সকল কন্টেন্ট সম্পূর্ণ ব্যক্তিগত উদ্যোগে শিক্ষার্থীদের সহায়তার জন্য তৈরি করা হয়েছে। 
-                এখানে শেয়ার করা তথ্যে কোনো ভুল থাকলে ডেভেলপার দায়ী থাকবে না। তাই নিজ দায়িত্বে যাচাই করে ব্যবহার করার অনুরোধ রইল।
+                এখানে শেয়ার করা তথ্যে কোনো ভুল থাকলে ডেভেলপার দায়ী থাকবে না।
             </p>
-            <button onclick="closeModal()" style="background: #2563eb; color: white; border: 2px solid #000; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%;">I Understand</button>
+            <button onclick="closeModal()" style="background: #2563eb; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; font-size: 16px;">I Understand</button>
         </div>
     </div>
 
@@ -216,19 +283,44 @@
 
         <div class="note">
             <p>
-                <b>Note:</b> Biology 1st "notebook pdf" এ Agaricus, Pteris নেই। <br>
-                রসায়ন ১ম পত্রের নাম ও চিত্রের জন্য <a class="extra-a" href="https://drive.google.com/file/d/1dGj_7wn50oFNqTjLXUu-BYSVIJp-rxwk/view?usp=sharing" target="_blank">এখানে ক্লিক করো</a>। <br>
-                হায়ারম্যাথ ২য় পত্রের ইনডেক্স ও ডেট <a class="extra-a" href="https://drive.google.com/open?id=1CA27SFq_gJroND4cvLj6kRVCjkbVT9D_&usp=drive_fs" target="_blank">এই ছবি</a> দেখে দিবে।
+                <b>Note:</b> রসায়ন ১ম পত্রের নাম ও চিত্রের জন্য <a class="extra-a" href="https://drive.google.com/file/d/1dGj_7wn50oFNqTjLXUu-BYSVIJp-rxwk/view?usp=sharing" target="_blank">এখানে ক্লিক করো</a>।
             </p>
         </div>
     </div>
 
     <footer>
-        <p>Made by <a href="https://jubayer0011.github.io/aboutme/" target="_blank" style="background:none; border:none; width:auto; text-decoration:underline; font-size: 16px;">JUBAYER</a></p>
-        <p style="font-size: 10px; opacity: 0.6;">© 2026 Practical Resource Hub</p>
+        <div style="margin-bottom: 12px; font-weight: 300; font-size: 13px; color: #9ca3af;">Need any help?</div>
+        <a href="https://jubayer0011.github.io/aboutme/" target="_blank" class="footer-link">Developed by JUBAYER</a>
+        <div class="copyright">© 2026 KALIAKAIR GOVT. COLLEGE | PRACTICAL HUB</div>
     </footer>
 
     <script>
+        // Your Custom Messages
+        const messages = [
+            "Everything is only for you ",
+            "You are the priority...",
+            "Everything is created only for you...",
+            "I’ve missed your touch on my screen...",
+            "A thousand lines of code, but you're my only focus...",
+            "Everything feels incomplete without you..."
+        ];
+
+        window.onload = function() {
+            // Randomly select a message
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('loading-text').innerText = randomMessage;
+
+            // Hide loader after exactly 3 seconds (3000ms)
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                loader.style.transition = 'opacity 0.8s ease';
+                setTimeout(() => {
+                    loader.style.visibility = 'hidden';
+                }, 800);
+            }, 3000);
+        };
+
         function openModal() { document.getElementById("myModal").style.display = "block"; }
         function closeModal() { document.getElementById("myModal").style.display = "none"; }
         window.onclick = function(event) {
