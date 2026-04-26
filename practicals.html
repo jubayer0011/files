@@ -6,276 +6,235 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-K79JSDSD3N');
 </script>
-
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>practicals</title>
     <style>
-
-        
-
-
-        
         @keyframes fadeout {
             0% { opacity: 1; visibility: visible; }
-            70% { opacity: 1; visibility: visible; }
+            80% { opacity: 1; visibility: visible; }
             100% { opacity: 0; visibility: hidden; }
         }
 
         .loading {
             color: white;
-            background-color: black;
+            background-color: #000;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            
-            pointer-events: auto; 
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; pointer-events: none; 
             animation: fadeout 2s forwards ease-in-out;
-            font-size: clamp(15px, 3vw, 30px);
+            font-size: 20px; font-family: sans-serif;
         }
 
-
-    
-
         body {
-            background: linear-gradient(to bottom right, rgb(205, 205, 255), rgb(158, 158, 255), rgb(124, 124, 255));
-            /* min-height ব্যবহার করা হয়েছে যাতে স্ক্রল করলেও ব্যাকগ্রাউন্ড ঠিক থাকে */
-            min-height: 100vh;
-            margin: 0px;
-            padding: 0px;
+            background: linear-gradient(135deg, #f0f4ff, #d9e2ff);
+            min-height: 100vh; margin: 0; padding: 0;
             background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .title {
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid black;
-            background: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(226, 253, 226), rgb(186, 255, 186), rgb(116, 255, 116));
-            border-radius: 3px;
-            font-weight: bold;
-            margin: 10px;
-            padding: 10px;
-        }
-
-        table {
-            background-color: white;
-            border: 1px solid black;
-            border-spacing: 0px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        td, th {
-            background-color: white;
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 5px;
-        }
-
-        .content {
-            font-size: clamp(15px, 3vw, 30px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 10px;
-        }
-
-        .table-title {
-            font-weight: bold;
-            background: linear-gradient(rgb(166, 236, 219), rgb(146, 250, 146));
+            background: white;
+            text-align: center;
+            border: 2px solid #000;
+            border-radius: 8px;
+            margin: 20px; padding: 15px;
+            font-weight: bold; color: #1a1a1a;
+            box-shadow: 4px 4px 0px #000;
         }
 
         .warning {
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 10px 20px;
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            color: red;
+            background: #fff;
+            margin: 10px 20px; padding: 10px;
+            border: 2px solid #ff4d4d;
+            border-radius: 8px;
+            color: #d32f2f; font-size: 14px;
+            text-align: center;
         }
 
-        p { margin: 0px; padding: 0px; }
+        .content {
+            display: flex; flex-direction: column; align-items: center; padding: 10px;
+        }
+
+        /* Improved Bold Table */
+        table {
+            background: white;
+            border-collapse: collapse;
+            width: 95%; max-width: 800px;
+            border: 3px solid #000; /* Outer Bold Border */
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            border: 2px solid #000; /* Inner Bold Lines */
+            padding: 12px;
+            text-align: center;
+        }
+
+        .table-title {
+            background: #2563eb;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr:nth-child(even) { background-color: #f8fafc; }
+
+        /* Buttons */
+        a {
+            display: inline-block;
+            padding: 8px 12px; margin: 4px 0;
+            background: #2563eb; color: white !important;
+            text-decoration: none; font-weight: bold;
+            border: 2px solid #000; border-radius: 6px;
+            width: 85%; transition: 0.2s;
+        }
+
+        a:hover { transform: translate(-2px, -2px); box-shadow: 3px 3px 0px #000; }
+        
+        .extra-a {
+            background: none !important; color: #2563eb !important;
+            border: none !important; width: auto !important;
+            text-decoration: underline !important; display: inline !important;
+        }
+
+        /* Modern Popup Modal */
+        .modal {
+            display: none; position: fixed; z-index: 10000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background: white; margin: 15% auto; padding: 20px;
+            border: 3px solid #000; width: 80%; max-width: 500px;
+            border-radius: 12px; position: relative;
+            box-shadow: 10px 10px 0px #2563eb;
+        }
+
+        .close-btn {
+            position: absolute; right: 15px; top: 10px;
+            font-size: 24px; cursor: pointer; font-weight: bold;
+        }
 
         .note {
-            background-color: white;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid black;
-            font-size: clamp(15px, 2vh, 20px);
-            max-width: 90%;
+            background: white; border: 2px solid #000;
+            padding: 15px; border-radius: 8px; max-width: 90%;
         }
 
         footer {
-            background-color: rgb(84, 84, 85);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            color: white;
+            background: #1a1a1a; color: white;
+            padding: 20px; text-align: center; margin-top: 20px;
         }
-
-
-        /*degin of a tag*/
-
-        a {
-  display: inline-block;
-  padding: 0px;
-  margin: 0px;
-  background-color: #2563eb; /* উজ্জ্বল নীল */
-  color: #ffffff;
-  text-decoration: none;
-  font-family: 'Hind Siliguri', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-  border: 1px solid black;
-  width: 100%;
-}
-
-/* হোভার এফেক্ট */
-a:hover {
-  background-color: #1d4ed8;
-  transform: translateY(-2px); /* হালকা উপরে উঠবে */
-  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
-}
-
-/* ক্লিক করার সময় */
-a:active {
-  transform: translateY(0);
-}
-
-/* ফাইলের সাইজ দেখানোর জন্য ছোট টেক্সট */
-a span {
-  font-size: 14px;
-  font-weight: 400;
-  opacity: 0.8;
-  margin-left: 8px;
-}
-
-.extra-a {
-    background-color: transparent;
-    color: blue;
-    border: none;
-    box-shadow: none;
-    display: inline;
-    width: auto;
-    padding: 0;
-    font-size: inherit;
-}
-
-.extra-a:hover {
-    background-color: transparent;
-    text-decoration: underline;
-    box-shadow: none;
-    transform: none;
-}
-
-
     </style>
 </head>
 <body>
 
     <div class="loading">Making everything ready for you...</div>
 
-    <div class="title"><p>Downlaod practicals pdf, HSC 26 (For Kaliakair Government College students)</p></div>
+    <div class="title">
+        Downlaod practicals pdf, HSC 26 (Kaliakair Government College)
+    </div>
     
     <div class="warning">
-        <p><b>DISCLAIMER: </b>Please read <a href="#" class="extra-a" onclick="alert('বিশেষ সতর্কবার্তা:\n\nএই ওয়েবপেজ এবং এর সাথে জরিত থাকা সকল ওয়েবপেজ এবং সকল প্রকার লিংক এবং সকল প্রকার পিডিএফ এবং অন্যান্য ফাইল সম্পূর্ণ ব্যক্তিগত উদ্যোগে শিক্ষার্থীদের সহায়তার জন্য তৈরি কিংবা সংগ্রহ করা হয়েছে। এখানে শেয়ার করা তথ্যে কোনো ভুল থাকলে এর জন্য ডেভেলপার দায়ী থাকবে না। তাই সবকিছু নিজ দায়িত্বে যাচাই করে ব্যবহার করার অনুরোধ রইল।'); return false;">this notice</a> before you downlaod or use any of these files.</p>
+        <p>⚠️ <b>DISCLAIMER:</b> Please read <a href="javascript:void(0)" class="extra-a" onclick="openModal()">this notice</a> before downloading.</p>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 style="color: #2563eb; margin-top: 0;">বিশেষ সতর্কবার্তা</h3>
+            <p style="line-height: 1.6; color: #333;">
+                এই ওয়েবপেজ এবং এর সাথে জড়িত সকল কন্টেন্ট সম্পূর্ণ ব্যক্তিগত উদ্যোগে শিক্ষার্থীদের সহায়তার জন্য তৈরি করা হয়েছে। 
+                এখানে শেয়ার করা তথ্যে কোনো ভুল থাকলে ডেভেলপার দায়ী থাকবে না। তাই নিজ দায়িত্বে যাচাই করে ব্যবহার করার অনুরোধ রইল।
+            </p>
+            <button onclick="closeModal()" style="background: #2563eb; color: white; border: 2px solid #000; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%;">I Understand</button>
+        </div>
     </div>
 
     <div class="content">
         <table>
-            <tr class="table-title">
-                <td class="table-title" align="center">Subject name</td>
-                <td class="table-title" align="center">Downlaod link</td>
-            </tr>
-            <tr>
-                <td align="center">Biology first paper</td>
-                <td align="center" style="display: flex; flex-direction: column;">
-
-                    <a href="https://drive.google.com/file/d/1xqgOVxQUfNsTlo44uhQrNT5TtbHz_LmG/view?usp=sharing"> notebook pdf </a> <hr style="display: flex; width: 100%; margin: 5px;">
-                    
-                    <a href="https://drive.google.com/drive/folders/1SNHx7AhNsWxh7JBfLGxECQW_-vaKO70H?usp=sharing">experiment photos</a>
-                
-                
-                </td>
-            </tr>
-            <tr>
-                <td align="center">Biology second paper</td>
-                <td align="center"><a href="https://drive.google.com/file/d/11sP7RgXSf6KUtX7CY327TtFDQw76AEeV/view?usp=sharing">notebook pdf</a></td>
-            </tr>
-            <tr>
-                <td align="center">Highermath 1st paper</td>
-                <td align="center"><a href="https://drive.google.com/file/d/1lw6EO45aDxCfeqM0aJZ2XftsKDuD-VjH/view?usp=sharing">experiments pdf</a></td>
-            </tr>
-            <tr>
-                <td align="center">Highermath 2nd paper</td>
-                <td align="center"><a href="https://jubayer0011.github.io/files/hm2nd.html">experiments pdf</a></td>
-            </tr>
-            <tr>
-                <td align="center">Chemistry 1st paper</td>
-                <td align="center"><a href="https://drive.google.com/file/d/1WjrUPWFUmmATSqtLaGv3K7W-3w-Zogxm/view?usp=sharing">notebook pdf</a></td>
-            </tr>
-            <tr>
-                <td align="center">Chemistry 2nd paper</td>
-                <td align="center"><p style="color: gray;">not availabe at this moment.</p></td>
-            </tr>
-            <tr>
-                <td align="center">Physics 1st paper</td>
-                <td align="center" style="display: flex; flex-direction: column;">
-                    <a href="https://drive.google.com/file/d/19njEQ92CWaVP4dFvrLqgzxCpeyeU5Hpo/view?usp=sharing">notebook pdf</a> <hr style="display: flex; width: 100%; margin: 5px;">
-                    <a href="https://drive.google.com/drive/folders/1Lav4HLz_zK8feQ6eKrrgyP5wl2_74Ro1?usp=sharing">experiments photos</a>
-                </td>
-            </tr>
-            <tr>
-                <td align="center">Physics 2nd paper</td>
-                
-                <td align="center" style="display: flex; flex-direction: column;">
-
-                    <a href="https://drive.google.com/file/d/1i2K5_nE88ssT30Xg_y_xuQN4fp6UB2G4/view?usp=sharing">Notebook pdf </a> <hr style="display: flex; width: 100; margin: 5px;">
-                    
-                    <a href="https://drive.google.com/file/d/1x7oVj5FUP563n-GDNLzok_3PiQvGNlbq/view?usp=sharing">experiments pdf</a>
-                
-                </td>
-            </tr>
-            <tr>
-                <td align="center">Ict first paper</td>
-                <td align="center"><a href="https://jubayer0011.github.io/files/">notebook pdf</a></td>
-            </tr>
+            <thead>
+                <tr class="table-title">
+                    <th>Subject Name</th>
+                    <th>Download Links</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Biology 1st Paper</b></td>
+                    <td style="display: flex; flex-direction: column; align-items: center;">
+                        <a href="https://drive.google.com/file/d/1xqgOVxQUfNsTlo44uhQrNT5TtbHz_LmG/view?usp=sharing">Notebook PDF</a>
+                        <a href="https://drive.google.com/drive/folders/1SNHx7AhNsWxh7JBfLGxECQW_-vaKO70H?usp=sharing" style="background: #10b981;">Experiment Photos</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Biology 2nd Paper</b></td>
+                    <td><a href="https://drive.google.com/file/d/11sP7RgXSf6KUtX7CY327TtFDQw76AEeV/view?usp=sharing">Notebook PDF</a></td>
+                </tr>
+                <tr>
+                    <td><b>Highermath 1st Paper</b></td>
+                    <td><a href="https://drive.google.com/file/d/1lw6EO45aDxCfeqM0aJZ2XftsKDuD-VjH/view?usp=sharing">Experiments PDF</a></td>
+                </tr>
+                <tr>
+                    <td><b>Highermath 2nd Paper</b></td>
+                    <td><a href="https://jubayer0011.github.io/files/hm2nd.html">Experiments PDF</a></td>
+                </tr>
+                <tr>
+                    <td><b>Chemistry 1st Paper</b></td>
+                    <td><a href="https://drive.google.com/file/d/1WjrUPWFUmmATSqtLaGv3K7W-3w-Zogxm/view?usp=sharing">Notebook PDF</a></td>
+                </tr>
+                <tr>
+                    <td><b>Chemistry 2nd Paper</b></td>
+                    <td><span style="color: gray; font-size: 13px;">Not available</span></td>
+                </tr>
+                <tr>
+                    <td><b>Physics 1st Paper</b></td>
+                    <td style="display: flex; flex-direction: column; align-items: center;">
+                        <a href="https://drive.google.com/file/d/19njEQ92CWaVP4dFvrLqgzxCpeyeU5Hpo/view?usp=sharing">Notebook PDF</a>
+                        <a href="https://drive.google.com/drive/folders/1Lav4HLz_zK8feQ6eKrrgyP5wl2_74Ro1?usp=sharing" style="background: #10b981;">Photos</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Physics 2nd Paper</b></td>
+                    <td style="display: flex; flex-direction: column; align-items: center;">
+                        <a href="https://drive.google.com/file/d/1i2K5_nE88ssT30Xg_y_xuQN4fp6UB2G4/view?usp=sharing">Notebook PDF</a>
+                        <a href="https://drive.google.com/file/d/1x7oVj5FUP563n-GDNLzok_3PiQvGNlbq/view?usp=sharing">Experiments PDF</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>ICT</b></td>
+                    <td><a href="https://jubayer0011.github.io/files/">Notebook PDF</a></td>
+                </tr>
+            </tbody>
         </table>
 
         <div class="note">
             <p>
-                biology first paper এর "notebook pdf" এ যেই পিডিএফ দেওয়া হয়েছে সেখানে Agaricus,pteris এই এক্সপেরিমেন্ট গুলো নেই।<br> <hr>
-                রসায়ন ১ম পত্রের পিডিএফ এ চিত্র এবং পরিক্ষার নাম দেওয়া নেই। ওগুলো সবাই <a class="extra-a" href="https://drive.google.com/file/d/1dGj_7wn50oFNqTjLXUu-BYSVIJp-rxwk/view?usp=sharing" target="_blank">এখানে ক্লিক করে</a> দেখে নিবা। <br> <hr>
-                হায়ারম্যাথ ২য় পত্রের ইনডেক্স এবং ডেট <a  class="extra-a" href="https://drive.google.com/open?id=1CA27SFq_gJroND4cvLj6kRVCjkbVT9D_&usp=drive_fs" target="_blank"> এই ছবি</a> অনুযায়ী দিতে হবে।
+                <b>Note:</b> Biology 1st "notebook pdf" এ Agaricus, Pteris নেই। <br>
+                রসায়ন ১ম পত্রের নাম ও চিত্রের জন্য <a class="extra-a" href="https://drive.google.com/file/d/1dGj_7wn50oFNqTjLXUu-BYSVIJp-rxwk/view?usp=sharing" target="_blank">এখানে ক্লিক করো</a>। <br>
+                হায়ারম্যাথ ২য় পত্রের ইনডেক্স ও ডেট <a class="extra-a" href="https://drive.google.com/open?id=1CA27SFq_gJroND4cvLj6kRVCjkbVT9D_&usp=drive_fs" target="_blank">এই ছবি</a> দেখে দিবে।
             </p>
         </div>
     </div>
-</body>
 
-<footer style="background-color: rgb(84, 84, 85); display: flex; align-items: center; justify-content: center; padding: 10px; color: white;">
-    <a href="https://jubayer0011.github.io/aboutme/" target="_blank" style="text-decoration: underline; color: white; background: none; border: none; box-shadow: none; width: auto; font-size: inherit;">
-    Made by JUBAYER
-    </a>
-</footer>
+    <footer>
+        <p>Made by <a href="https://jubayer0011.github.io/aboutme/" target="_blank" style="background:none; border:none; width:auto; text-decoration:underline; font-size: 16px;">JUBAYER</a></p>
+        <p style="font-size: 10px; opacity: 0.6;">© 2026 Practical Resource Hub</p>
+    </footer>
+
+    <script>
+        function openModal() { document.getElementById("myModal").style.display = "block"; }
+        function closeModal() { document.getElementById("myModal").style.display = "none"; }
+        window.onclick = function(event) {
+            let modal = document.getElementById("myModal");
+            if (event.target == modal) { modal.style.display = "none"; }
+        }
+    </script>
+</body>
 </html>
