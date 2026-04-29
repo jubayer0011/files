@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied - Terms Not Accepted</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #1e293b;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            border: 2px solid #ef4444;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .icon { font-size: 50px; color: #ef4444; margin-bottom: 20px; }
+        h1 { font-size: 24px; margin-bottom: 15px; color: #b91c1c; }
+        p { line-height: 1.6; font-size: 16px; color: #475569; margin-bottom: 25px; }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.3s;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 0px #000;
+        }
+
+        .footer-note { margin-top: 20px; font-size: 13px; color: #94a3b8; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon">🚫</div>
+        <h1>Access Denied</h1>
+        <p>
+            We apologize, but you cannot access this platform or its contents because you have not agreed to our <b>Terms and Conditions</b>.
+        </p>
+        <p style="font-size: 14px;">
+            Agreement to our terms is mandatory to ensure legal protection for both the user and the developer.
+        </p>
+        
+        <a href="javascript:void(0)" onclick="resetTerms()" class="back-btn">Go Back & Review Terms</a>
+
+        <div class="footer-note">
+            If you believe this is an error, please contact the administrator.
+        </div>
+    </div>
+
+    <script>
+        function resetTerms() {
+            // Memory clean-up
+            localStorage.removeItem("termsAgreed");
+            // Redirect to main page (Change filename if needed)
+            window.location.href = "practicals.html"; 
+        }
+    </script>
+</body>
+</html>

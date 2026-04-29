@@ -7,6 +7,11 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-K79JSDSD3N');
+
+  // Logic: Check if user already disagreed
+  if (localStorage.getItem("termsAgreed") === "false") {
+      window.location.href = "sorry.html";
+  }
 </script>
 
     <meta charset="UTF-8">
@@ -83,7 +88,6 @@
             box-shadow: 4px 4px 0px #000;
         }
 
-        /* --- Updated Notice Box & Button --- */
         .notice-box {
             background: #ffffff;
             margin: 15px 20px;
@@ -122,19 +126,18 @@
             text-decoration: underline;
         }
 
-        /* disagree-btn Fix */
         .disagree-btn {
-            display: inline-block !important; /* Ensure it stays visible */
+            display: inline-block !important;
             margin-top: 15px;
-            background: #ef4444 !important; /* Red background */
-            color: white !important; /* White text */
+            background: #ef4444 !important;
+            color: white !important;
             padding: 10px 20px !important;
             border-radius: 8px !important;
             font-size: 14px !important;
             text-decoration: none !important;
             font-weight: bold !important;
             border: none !important;
-            width: auto !important; /* Fix width issues */
+            width: auto !important;
             transition: 0.3s;
             box-shadow: 0 2px 5px rgba(239, 68, 68, 0.3);
         }
@@ -143,7 +146,6 @@
             background: #dc2626 !important;
             transform: scale(1.05);
         }
-        /* -------------------------- */
 
         .content {
             display: flex; flex-direction: column; align-items: center; padding: 10px;
@@ -168,7 +170,6 @@
 
         tr:nth-child(even) { background-color: #f8fafc; }
 
-        /* General Links in Table */
         td a {
             display: inline-block;
             padding: 8px 12px; margin: 4px 0;
@@ -237,7 +238,7 @@
         </p>
         <button id="readMoreBtn" class="read-more-btn" onclick="toggleNotice()">Read more...</button>
         <div style="margin-top: 5px;">
-            <a href="sorry.html" class="disagree-btn">I do not agree</a>
+            <a href="javascript:void(0)" onclick="handleDisagree()" class="disagree-btn">I do not agree</a>
         </div>
     </div>
 
@@ -314,6 +315,12 @@
     </footer>
 
     <script>
+        // Logic to handle disagree button click
+        function handleDisagree() {
+            localStorage.setItem("termsAgreed", "false");
+            window.location.href = "sorry.html";
+        }
+
         function toggleNotice() {
             const text = document.getElementById('noticeText');
             const btn = document.getElementById('readMoreBtn');
@@ -326,29 +333,19 @@
             }
         }
 
-        const messages = [
-            "I'm so in love with you...",
-            "You can ask the flowers, I sit for hours",
-            "Everything belongs to you...",
-            "Now is just the time, while both of us are young...",
-            "Your eyes: A beautiful place to get lost."
-        ];
+        const messages = ["I'm so in love with you...", "You can ask the flowers, I sit for hours", "Everything belongs to you...", "Your eyes: A beautiful place to get lost."];
 
         window.onload = function() {
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             const loadingTextElement = document.getElementById('loading-text');
-            if (loadingTextElement) {
-                loadingTextElement.innerText = randomMessage;
-            }
+            if (loadingTextElement) loadingTextElement.innerText = randomMessage;
 
             setTimeout(() => {
                 const loader = document.getElementById('loader');
                 if (loader) {
                     loader.style.opacity = '0';
                     loader.style.transition = 'opacity 0.8s ease';
-                    setTimeout(() => {
-                        loader.style.visibility = 'hidden';
-                    }, 800);
+                    setTimeout(() => { loader.style.visibility = 'hidden'; }, 800);
                 }
             }, 3000);
         };
