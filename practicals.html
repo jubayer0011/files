@@ -83,16 +83,67 @@
             box-shadow: 4px 4px 0px #000;
         }
 
+        /* --- Updated Notice Box & Button --- */
         .notice-box {
             background: #ffffff;
             margin: 15px 20px;
             padding: 20px;
             border-radius: 12px;
             border: 2px solid #ef4444;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             color: #1e293b;
             text-align: center;
         }
+
+        .notice-text {
+            line-height: 1.6;
+            margin: 0;
+            font-size: 14px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: #475569;
+        }
+
+        .notice-text.expanded {
+            display: block;
+            overflow: visible;
+        }
+
+        .read-more-btn {
+            color: #2563eb;
+            background: none;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 8px;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        /* disagree-btn Fix */
+        .disagree-btn {
+            display: inline-block !important; /* Ensure it stays visible */
+            margin-top: 15px;
+            background: #ef4444 !important; /* Red background */
+            color: white !important; /* White text */
+            padding: 10px 20px !important;
+            border-radius: 8px !important;
+            font-size: 14px !important;
+            text-decoration: none !important;
+            font-weight: bold !important;
+            border: none !important;
+            width: auto !important; /* Fix width issues */
+            transition: 0.3s;
+            box-shadow: 0 2px 5px rgba(239, 68, 68, 0.3);
+        }
+
+        .disagree-btn:hover {
+            background: #dc2626 !important;
+            transform: scale(1.05);
+        }
+        /* -------------------------- */
 
         .content {
             display: flex; flex-direction: column; align-items: center; padding: 10px;
@@ -117,7 +168,8 @@
 
         tr:nth-child(even) { background-color: #f8fafc; }
 
-        a {
+        /* General Links in Table */
+        td a {
             display: inline-block;
             padding: 8px 12px; margin: 4px 0;
             background: #2563eb; color: white !important;
@@ -126,7 +178,7 @@
             width: 85%; transition: 0.2s;
         }
 
-        a:hover { transform: translate(-2px, -2px); box-shadow: 3px 3px 0px #000; }
+        td a:hover { transform: translate(-2px, -2px); box-shadow: 3px 3px 0px #000; }
         
         .extra-a {
             background: none !important; color: #2563eb !important;
@@ -175,14 +227,18 @@
     </div>
 
     <div class="title">
-        Downlaod practicals pdf, HSC 26 (Kaliakair Government College)
+        Download practicals pdf, HSC 26 (Kaliakair Government College)
     </div>
     
     <div class="notice-box">
         <h3 style="color: #ef4444; margin: 0 0 10px 0; font-size: 18px;">📢 বিশেষ সতর্কবার্তা</h3>
-        <p style="line-height: 1.6; margin: 0; font-size: 15px;">
-            এই ওয়েবসাইট এবং এর সাথে সংশ্লিষ্ট সকল প্ল্যাটফর্মে প্রকাশিত যাবতীয় কন্টেন্ট (পিডিএফ, ছবি বা অন্যান্য ফাইল) সম্পূর্ণ ব্যক্তিগত উদ্যোগে জনস্বার্থে শেয়ার করা হয়েছে। এখানে প্রদত্ত তথ্যের নির্ভুলতা সম্পর্কে ডেভেলপার কোনো নিশ্চয়তা প্রদান করে না। কন্টেন্টসমূহ ব্যবহারের ফলে কোনো প্রকার ভুল বা ক্ষয়ক্ষতির জন্য ডেভেলপার কোনোভাবেই দায়ী থাকবে না। এই ওয়েবসাইটের যেকোনো তথ্য বা ফাইল ব্যবহারকারীর নিজ দায়িত্বে ব্যবহারের অনুরোধ করা হলো। এই প্ল্যাটফর্মটি ব্যবহারের মাধ্যমে আপনি এই শর্তাবলির সাথে একমত পোষণ করছেন বলে গণ্য হবে।
+        <p id="noticeText" class="notice-text">
+            এই ওয়েবসাইট এবং এর সাথে সংশ্লিষ্ট সকল প্ল্যাটফর্মে প্রকাশিত যাবতীয় কন্টেন্ট (পিডিএফ, ছবি বা অন্যান্য ফাইল) সম্পূর্ণ ব্যক্তিগত উদ্যোগে জনস্বার্থে শেয়ার করা হয়েছে। এখানে প্রদত্ত তথ্যের নির্ভুলতা সম্পর্কে ডেভেলপার কোনো নিশ্চয়তা প্রদান করে না। কন্টেন্টসমূহ ব্যবহারের ফলে কোনো প্রকার ভুল বা ক্ষয়ক্ষতির জন্য ডেভেলপার কোনোভাবেই দায়ী থাকবে না। এই ওয়েবসাইটের যেকোনো তথ্য বা ফাইল ব্যবহারকারীর নিজ দায়িত্বে ব্যবহারের অনুরোধ করা হলো। এই প্ল্যাটফর্মটি ব্যবহারের মাধ্যমে আপনি এই শর্তাবলির সাথে একমত পোষণ করছেন বলে গণ্য হবে।
         </p>
+        <button id="readMoreBtn" class="read-more-btn" onclick="toggleNotice()">Read more...</button>
+        <div style="margin-top: 5px;">
+            <a href="sorry.html" class="disagree-btn">I do not agree</a>
+        </div>
     </div>
 
     <div class="content">
@@ -198,7 +254,7 @@
                     <td><b>Biology 1st Paper</b></td>
                     <td style="display: flex; flex-direction: column; align-items: center;">
                         <a href="https://drive.google.com/file/d/1xqgOVxQUfNsTlo44uhQrNT5TtbHz_LmG/view?usp=sharing">Notebook PDF</a>
-                        <a href="https://drive.google.com/drive/folders/1SNHx7AhNsWxh7JBfLGxECQW_-vaKO70H?usp=sharing" style="background: #10b981;">Experiment Photos</a>
+                        <a href="https://drive.google.com/drive/folders/1SNHx7AhNsWxh7JBfLGxECQW_-vaKO70H?usp=sharing" style="background: #10b981 !important; border: 2px solid #000;">Experiment Photos</a>
                     </td>
                 </tr>
                 <tr>
@@ -225,7 +281,7 @@
                     <td><b>Physics 1st Paper</b></td>
                     <td style="display: flex; flex-direction: column; align-items: center;">
                         <a href="https://drive.google.com/file/d/19njEQ92CWaVP4dFvrLqgzxCpeyeU5Hpo/view?usp=sharing">Notebook PDF</a>
-                        <a href="https://drive.google.com/drive/folders/1Lav4HLz_zK8feQ6eKrrgyP5wl2_74Ro1?usp=sharing" style="background: #10b981;">Photos</a>
+                        <a href="https://drive.google.com/drive/folders/1Lav4HLz_zK8feQ6eKrrgyP5wl2_74Ro1?usp=sharing" style="background: #10b981 !important; border: 2px solid #000;">Photos</a>
                     </td>
                 </tr>
                 <tr>
@@ -243,11 +299,11 @@
         </table>
 
         <div class="note" style="display: flex; flex-direction: column;">
-            <p>
+            <div>
                 <b>Note:</b> 
                 <p>biology 1st পেপার এর 'notebook pdf' এ Agaricus,pteris - এই এক্সপেরিমেন্টগুলো নেই।</p> <hr style="display: flex; width: 100%;">
                 <p>রসায়ন ১ম পত্রের experiment এর নাম ও চিত্রের জন্য <a class="extra-a" href="https://drive.google.com/file/d/1dGj_7wn50oFNqTjLXUu-BYSVIJp-rxwk/view?usp=sharing" target="_blank">এখানে ক্লিক করো</a>।<p>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -258,29 +314,33 @@
     </footer>
 
     <script>
-        // Your Custom Messages
+        function toggleNotice() {
+            const text = document.getElementById('noticeText');
+            const btn = document.getElementById('readMoreBtn');
+            if (text.classList.contains('expanded')) {
+                text.classList.remove('expanded');
+                btn.innerText = 'Read more...';
+            } else {
+                text.classList.add('expanded');
+                btn.innerText = 'Read less';
+            }
+        }
+
         const messages = [
             "I'm so in love with you...",
             "You can ask the flowers, I sit for hours",
-            "Im so in love with you...",
-            "Now is just the time, while both of us are young...",
-            "You can ask the flowers, I sit for hours",
             "Everything belongs to you...",
             "Now is just the time, while both of us are young...",
-            "Your eyes: A beautiful place to get lost.",
-            "You can ask the flowers, I sit for hours",
-            "Now is just the time, while both of us are young..."
+            "Your eyes: A beautiful place to get lost."
         ];
 
         window.onload = function() {
-            // Randomly select a message
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             const loadingTextElement = document.getElementById('loading-text');
             if (loadingTextElement) {
                 loadingTextElement.innerText = randomMessage;
             }
 
-            // Hide loader after exactly 3 seconds (3000ms)
             setTimeout(() => {
                 const loader = document.getElementById('loader');
                 if (loader) {
