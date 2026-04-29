@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Denied - Terms Not Accepted</title>
     <style>
+        /* প্রবেশ অ্যানিমেশন */
+        @keyframes pageEntrance {
+            from { opacity: 0; transform: scale(0.9) translateY(30px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* টেক্সট স্লাইড অ্যানিমেশন */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         body {
             background: linear-gradient(135deg, #f8fafc, #e2e8f0);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,57 +27,90 @@
             margin: 0;
             color: #1e293b;
             text-align: center;
+            overflow: hidden;
         }
 
         .container {
             background: white;
             padding: 40px;
-            border-radius: 16px;
+            border-radius: 24px;
             border: 2px solid #ef4444;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
             max-width: 500px;
             width: 90%;
-            transition: all 0.3s ease;
+            /* এন্ট্রান্স অ্যানিমেশন অ্যাপ্লাই */
+            animation: pageEntrance 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: all 0.5s ease;
+            position: relative;
         }
 
-        .icon { font-size: 50px; color: #ef4444; margin-bottom: 20px; }
-        h1 { font-size: 24px; margin-bottom: 15px; color: #b91c1c; }
+        .icon { 
+            font-size: 60px; 
+            color: #ef4444; 
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        h1 { font-size: 26px; margin-bottom: 15px; color: #b91c1c; }
         p { line-height: 1.6; font-size: 16px; color: #475569; margin-bottom: 25px; }
 
         .back-btn, .agree-btn {
             display: inline-block;
-            padding: 12px 25px;
+            padding: 14px 30px;
             background-color: #2563eb;
             color: white;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 8px;
+            border-radius: 12px;
             transition: 0.3s;
             border: 2px solid #000;
             cursor: pointer;
-        }
-
-        .back-btn:hover, .agree-btn:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-2px);
             box-shadow: 4px 4px 0px #000;
         }
 
+        .back-btn:hover, .agree-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #000;
+        }
+
         .agree-btn {
-            background-color: #10b981; /* Green color for Agree */
-            margin-top: 20px;
+            background-color: #10b981;
+            margin-top: 15px;
         }
 
-        .agree-btn:hover {
-            background-color: #059669;
+        /* কন্টেন্ট পরিবর্তন হওয়ার সময় ফেড এফেক্ট */
+        .fade-out {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: 0.4s ease;
         }
 
-        .footer-note { margin-top: 20px; font-size: 13px; color: #94a3b8; }
+        .fade-in {
+            animation: slideUp 0.6s forwards ease;
+        }
+
+        #termsContainer { display: none; }
         
-        /* Terms layout initially hidden */
-        #termsContainer {
-            display: none;
+        .terms-text {
+            text-align: justify;
+            font-size: 14px;
+            border: 1.5px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 15px;
+            background: #f8fafc;
+            line-height: 1.7;
+            color: #334155;
+            margin-bottom: 10px;
         }
+
+        .footer-note { margin-top: 25px; font-size: 12px; color: #94a3b8; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
@@ -75,39 +120,58 @@
             <div class="icon">🚫</div>
             <h1>Access Denied</h1>
             <p>
-                We apologize, but you cannot access this platform or its contents because you have not agreed to our <b>Terms and Conditions</b>.
+                We apologize, but you cannot access this platform because you have not agreed to our <b>Terms and Conditions</b>.
             </p>
-            <p style="font-size: 14px;">
-                Agreement to our terms is mandatory to ensure legal protection for both the user and the developer.
-            </p>
-            <a href="javascript:void(0)" onclick="showTerms()" class="back-btn">Go Back & Review Terms</a>
+            <button onclick="showTerms()" class="back-btn">Go Back & Review Terms</button>
             <div class="footer-note">
-                If you believe this is an error, please contact the administrator.
+                SECURE ACCESS GATEWAY
             </div>
         </div>
 
         <div id="termsContainer">
-            <h3 style="color: #2563eb; margin-bottom: 15px;">📜 Terms of Use</h3>
-            <p style="text-align: justify; font-size: 15px; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; background: #f8fafc;">
+            <h3 style="color: #2563eb; margin: 0 0 15px 0;">📜 Terms of Use</h3>
+            <div class="terms-text">
                 এই ওয়েবসাইট এবং এর সাথে সংশ্লিষ্ট সকল প্ল্যাটফর্মে প্রকাশিত যাবতীয় কন্টেন্ট (পিডিএফ, ছবি বা অন্যান্য ফাইল) সম্পূর্ণ ব্যক্তিগত উদ্যোগে জনস্বার্থে শেয়ার করা হয়েছে। এখানে প্রদত্ত তথ্যের নির্ভুলতা সম্পর্কে ডেভেলপার কোনো নিশ্চয়তা প্রদান করে না। কন্টেন্টসমূহ ব্যবহারের ফলে কোনো প্রকার ভুল বা ক্ষয়ক্ষতির জন্য ডেভেলপার কোনোভাবেই দায়ী থাকবে না। এই ওয়েবসাইটের যেকোনো তথ্য বা ফাইল ব্যবহারকারীর নিজ দায়িত্বে ব্যবহারের অনুরোধ করা হলো। এই প্ল্যাটফর্মটি ব্যবহারের মাধ্যমে আপনি এই শর্তাবলির সাথে একমত পোষণ করছেন বলে গণ্য হবে।
-            </p>
-            <button onclick="acceptTerms()" class="agree-btn">I agree</button>
+            </div>
+            <button onclick="acceptTerms()" class="agree-btn">I agree, let me in</button>
         </div>
     </div>
 
     <script>
         function showTerms() {
-            // Hide access denied text and show terms
-            document.getElementById('deniedContent').style.display = 'none';
-            document.getElementById('termsContainer').style.display = 'block';
-            document.getElementById('mainCard').style.borderColor = '#2563eb'; // Change border to blue
+            const denied = document.getElementById('deniedContent');
+            const terms = document.getElementById('termsContainer');
+            const card = document.getElementById('mainCard');
+
+            // বর্তমান কন্টেন্টকে উপরে সরিয়ে ভ্যানিশ করা
+            denied.classList.add('fade-out');
+
+            setTimeout(() => {
+                denied.style.display = 'none';
+                
+                // কার্ডের লুক পরিবর্তন (বর্ডার লাল থেকে নীল)
+                card.style.borderColor = '#2563eb';
+                card.style.transform = 'scale(1.02)';
+                
+                // নতুন কন্টেন্ট আনা
+                terms.style.display = 'block';
+                terms.classList.add('fade-in');
+                
+                setTimeout(() => {
+                    card.style.transform = 'scale(1)';
+                }, 300);
+            }, 400);
         }
 
         function acceptTerms() {
-            // Memory clean-up & Set variable to true
-            localStorage.setItem("termsAgreed", "true");
-            // Redirect to main page
-            window.location.href = "practicals.html"; 
+            // পেজ থেকে বের হওয়ার আগে একটি ছোট জুম-আউট অ্যানিমেশন
+            document.getElementById('mainCard').style.transform = 'scale(0.9)';
+            document.getElementById('mainCard').style.opacity = '0';
+
+            setTimeout(() => {
+                localStorage.setItem("termsAgreed", "true");
+                window.location.href = "practicals.html"; 
+            }, 400);
         }
     </script>
 </body>
