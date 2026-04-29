@@ -83,27 +83,15 @@
             box-shadow: 4px 4px 0px #000;
         }
 
-        .warning {
+        .notice-box {
             background: #ffffff;
             margin: 15px 20px;
-            padding: 12px 20px;
+            padding: 20px;
             border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            border: 2px solid #ef4444;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            color: #475569;
-            font-size: 14px;
-        }
-
-        .warning-icon {
-            background: #fee2e2;
-            color: #ef4444;
-            width: 24px; height: 24px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; font-weight: bold;
+            color: #1e293b;
+            text-align: center;
         }
 
         .content {
@@ -146,22 +134,6 @@
             text-decoration: underline !important; display: inline !important;
             font-weight: 600;
         }
-
-        .modal {
-            display: none; position: fixed; z-index: 10000;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
-        }
-
-        .modal-content {
-            background: white; margin: 15% auto; padding: 25px;
-            border: 3px solid #000; width: 85%; max-width: 450px;
-            border-radius: 16px; position: relative;
-            box-shadow: 10px 10px 0px #2563eb;
-            text-align: center;
-        }
-
-        .close-btn { position: absolute; right: 15px; top: 10px; font-size: 24px; cursor: pointer; color: #94a3b8; }
 
         .note {
             background: white; border: 2px solid #000;
@@ -206,22 +178,13 @@
         Downlaod practicals pdf, HSC 26 (Kaliakair Government College)
     </div>
     
-    <div class="warning">
-        <span class="warning-icon">!</span>
-        <span><b>DISCLAIMER:</b> Please read <a href="javascript:void(0)" class="extra-a" onclick="openModal()">this notice</a> before downloading.</span>
-    </div>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div style="font-size: 40px; margin-bottom: 10px;">📢</div>
-            <h3 style="color: #1e293b; margin: 0 0 15px 0; font-size: 20px;">বিশেষ সতর্কবার্তা</h3>
-            <p style="line-height: 1.6; color: #64748b; font-size: 15px; margin-bottom: 20px;">
-                এই ওয়েবপেজ এবং এর সাথে জড়িত সকল কন্টেন্ট সম্পূর্ণ ব্যক্তিগত উদ্যোগে শিক্ষার্থীদের সহায়তার জন্য তৈরি করা হয়েছে। 
-                এখানে শেয়ার করা তথ্যে কোনো ভুল থাকলে ডেভেলপার দায়ী থাকবে না।
-            </p>
-            <button onclick="closeModal()" style="background: #2563eb; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; font-size: 16px;">I Understand</button>
-        </div>
+    <div class="notice-box">
+        <h3 style="color: #ef4444; margin: 0 0 10px 0; font-size: 18px;">📢 বিশেষ সতর্কবার্তা</h3>
+        <p style="line-height: 1.6; margin: 0; font-size: 15px;">
+            এই ওয়েবপেজ এবং এর সাথে জড়িত বাকি সব পেজ এবং এই ওয়েব পেজ এ আপলোড করা সকল প্রকার পিডিএফ কিংবা এই ওয়েবপেজ এর সাথে জড়িত থাকা অন্য কোনো পেজ এ থাকা অন্য কোনো পিডিএফ অথবা ছবি, অথবা যেকোনো ধরণের ফাইল সম্পূর্ণ ব্যক্তিগত উদ্যোগে সবাইকে সহায়তার জন্য তৈরি কিংবা সংগ্রহ করা হয়েছে। 
+            এখানে শেয়ার করা তথ্যে কোনো ভুল থাকলে কিংবা এগুলো ব্যাবহারের ফলে কারো যেকোনো ধরনের ক্ষতি হলে এর জন্য ডেভেলপার কোনো ভাবেই দায়ী থাকবে না।
+			এই ওয়েবপেজ ব্যাবহার এর মাধ্যমে সবাই মর্মে সম্মত হচ্ছে যে, সবাই তার নিজ ইচ্ছায় এই ওয়েবপেজ কিংবা এর সাথে জড়িত থাকা অন্য কোন পেজ এর কন্টেন্ট/কন্টেন্টসমূহ ব্যাবহার করছে।
+        </p>
     </div>
 
     <div class="content">
@@ -314,25 +277,23 @@
         window.onload = function() {
             // Randomly select a message
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            document.getElementById('loading-text').innerText = randomMessage;
+            const loadingTextElement = document.getElementById('loading-text');
+            if (loadingTextElement) {
+                loadingTextElement.innerText = randomMessage;
+            }
 
             // Hide loader after exactly 3 seconds (3000ms)
             setTimeout(() => {
                 const loader = document.getElementById('loader');
-                loader.style.opacity = '0';
-                loader.style.transition = 'opacity 0.8s ease';
-                setTimeout(() => {
-                    loader.style.visibility = 'hidden';
-                }, 800);
+                if (loader) {
+                    loader.style.opacity = '0';
+                    loader.style.transition = 'opacity 0.8s ease';
+                    setTimeout(() => {
+                        loader.style.visibility = 'hidden';
+                    }, 800);
+                }
             }, 3000);
         };
-
-        function openModal() { document.getElementById("myModal").style.display = "block"; }
-        function closeModal() { document.getElementById("myModal").style.display = "none"; }
-        window.onclick = function(event) {
-            let modal = document.getElementById("myModal");
-            if (event.target == modal) { modal.style.display = "none"; }
-        }
     </script>
 </body>
 </html>
