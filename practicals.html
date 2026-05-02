@@ -17,6 +17,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>practicals</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Modern Opening Animation */
         @keyframes fadeInOut {
@@ -78,14 +80,45 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .title {
+        .title-container {
             background: white;
             text-align: center;
             border: 2px solid #000;
             border-radius: 8px;
             margin: 20px; padding: 15px;
-            font-weight: bold; color: #1a1a1a;
             box-shadow: 4px 4px 0px #000;
+        }
+
+        .title-text {
+            font-weight: bold; 
+            color: #1a1a1a;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .subtitle-text {
+            font-size: 14px;
+            color: #4b5563;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .social-link {
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .whatsapp-link { color: #25d366; }
+        .facebook-link { color: #1877f2; }
+
+        .social-link:hover {
+            transform: scale(1.2);
         }
 
         .notice-box {
@@ -227,12 +260,21 @@
         <div class="loader-bar"></div>
     </div>
 
-    <div class="title">
-        Download practicals pdf, HSC 26 (Kaliakair Government College)
+    <div class="title-container">
+        <div class="title-text">Download practicals pdf, HSC 26 (Kaliakair Government College)</div>
+        <div class="subtitle-text">
+            Developed by JUBAYER 
+            <a href="https://wa.me/8801576470915" target="_blank" class="social-link whatsapp-link">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61580216250337" target="_blank" class="social-link facebook-link">
+                <i class="fab fa-facebook"></i>
+            </a>
+        </div>
     </div>
     
     <div class="notice-box">
-        <h3 style="color: #ef4444; margin: 0 0 10px 0; font-size: 18px;">📢 দায়মুক্তি</h3>
+        <h3 style="color: #ef4444; margin: 0 0 10px 0; font-size: 18px;">📢 দায়মুক্তি</h3>
         <p id="noticeText" class="notice-text">
             এই ওয়েবসাইট এবং এর সাথে সংশ্লিষ্ট সকল প্ল্যাটফর্মে প্রকাশিত যাবতীয় কন্টেন্ট (পিডিএফ, ছবি বা অন্যান্য ফাইল) সম্পূর্ণ ব্যক্তিগত উদ্যোগে জনস্বার্থে শেয়ার করা হয়েছে। এখানে প্রদত্ত তথ্যের নির্ভুলতা সম্পর্কে ডেভেলপার কোনো নিশ্চয়তা প্রদান করে না। কন্টেন্টসমূহ ব্যবহারের ফলে কোনো প্রকার ভুল বা ক্ষয়ক্ষতির জন্য ডেভেলপার কোনোভাবেই দায়ী থাকবে না। এই ওয়েবসাইটের যেকোনো তথ্য বা ফাইল ব্যবহারকারীর নিজ দায়িত্বে ব্যবহারের অনুরোধ করা হলো। এই প্ল্যাটফর্মটি ব্যবহারের মাধ্যমে আপনি এই শর্তাবলির সাথে একমত পোষণ করছেন।
         </p>
@@ -244,7 +286,7 @@
 
     <div class="content">
 	
-	<div><p>Last updated: 2 May 2026 (03:03 AM)</p></div>
+	<div><p>Last updated: 2 May 2026 (11:07 pm)</p></div>
 	
 	
         <table>
@@ -310,7 +352,7 @@
         <div class="note" style="display: flex; flex-direction: column;">
             <div>
                 <b>Note:</b> 
-                <p>highermath 1st paper এর দশ নম্বর প্র্যাক্টিকাল এর প্রশ্নে সম্ভবত ভুল রয়েছে কেননা, ইন্টিগ্রেশনের লোয়ার লিমিট 0 দেওয়া হয়েছে। যেহেতু x = 0 বিন্দুতে ln(x) অসংজ্ঞায়িত (negetive infty), তাই সাধারণ সাংখ্যিক পদ্ধতিতে এর মান বের করা সম্ভব নয়। কাজেইই লোয়ার লিমিট ৫ ধরে সমাধাণ করেছি কেননা লোয়াল লিমিট ৫ হলে যে উত্তর আসে তা বইতে দেওয়া উত্তর এর সাথে মিলে যায়।</p> <hr style="display: flex; width: 100%;">
+                <p>highermath 1st paper এর দশ নম্বর প্র্যাক্টিকাল এর প্রশ্নে সম্ভবত ভুল রয়েছে কেননা, ইন্টিগ্রেশনের লোয়ার লিমিট 0 দেওয়া হয়েছে। যেহেতু x = 0 বিন্দুতে ln(x) অসংজ্ঞায়িত (negetive infty), তাই সাধারণ সাংখ্যিক পদ্ধতিতে এর মান বের করা সম্ভব নয়। কাজেইই লোয়ার লিমিট ৫ ধরে সমাধাণ করেছি কেননা লোয়াল লিমিট ৫ হলে যে উত্তর আসে তা বইতে দেওয়া উত্তর এর সাথে মিলে যায়।</p> <hr style="display: flex; width: 100%;">
 				<p>Highermath 2nd paper এর ইন্ডেক্স এবং ডেট দেখতে <a class="extra-a" href="highermath_2nd_index.jpeg"> এখানে </a> ক্লিক করো। </p> <hr style="display: flex; width: 100%;">
 				<p>physics এর ইন্ডেক্স এবং ডেট দেখতে <a class="extra-a" href="physics_index.jpeg"> এখানে </a> ক্লিক করো। </p> <hr style="display: flex; width: 100%;">
                 <p>biology 1st পেপার এর 'notebook pdf' এ Agaricus,pteris - এই এক্সপেরিমেন্টগুলো নেই।</p> <hr style="display: flex; width: 100%;">
