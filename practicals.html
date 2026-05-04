@@ -1,247 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K79JSDSD3N"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-K79JSDSD3N');
-
-  if (localStorage.getItem("termsAgreed") === "false") {
-      window.location.href = "sorry.html";
-  }
-</script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>practicals - Final Version</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateY(10px); }
-            20% { opacity: 1; transform: translateY(0); }
-            80% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(-10px); }
-        }
-
-        .loading {
-            color: white;
-            background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            z-index: 9999; 
-            font-family: 'Segoe UI', sans-serif;
-            transition: opacity 0.8s ease-in-out, visibility 0.8s;
-        }
-
-        #loading-text {
-            font-size: clamp(16px, 4.5vw, 22px);
-            font-weight: 300;
-            letter-spacing: 1px;
-            text-align: center;
-            padding: 0 25px;
-            animation: fadeInOut 3s infinite ease-in-out;
-            font-style: italic;
-        }
-
-        .loader-bar {
-            width: 140px;
-            height: 2px;
-            background: rgba(255,255,255,0.1);
-            margin-top: 25px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-
-        .loader-bar::after {
-            content: '';
-            position: absolute;
-            width: 40%;
-            height: 100%;
-            background: #2563eb;
-            animation: loadingBar 1.5s infinite ease-in-out;
-        }
-
-        @keyframes loadingBar {
-            0% { left: -40%; }
-            100% { left: 100%; }
-        }
-
-        body {
-            background: linear-gradient(135deg, #f0f4ff, #d9e2ff);
-            min-height: 100vh; margin: 0; padding: 0;
-            background-attachment: fixed;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        /* End of Support Banner Style */
-        .eos-banner {
-            background: #1e293b;
-            color: #f8fafc;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 12px;
-            border-left: 6px solid #ef4444;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-        }
-
-        .eos-icon {
-            font-size: 32px;
-            color: #ef4444;
-        }
-
-        .eos-content h4 {
-            margin: 0;
-            font-size: 18px;
-            color: #fca5a1;
-            letter-spacing: 0.5px;
-        }
-
-        .eos-content p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            line-height: 1.5;
-            opacity: 0.9;
-        }
-
-        .title-container {
-            background: white;
-            text-align: center;
-            border: 2px solid #000;
-            border-radius: 8px;
-            margin: 20px; padding: 15px;
-            box-shadow: 4px 4px 0px #000;
-        }
-
-        .title-text {
-            font-weight: bold; 
-            color: #1a1a1a;
-            margin-bottom: 5px;
-            font-size: 18px;
-        }
-
-        .subtitle-text {
-            font-size: 14px;
-            color: #4b5563;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .social-link {
-            text-decoration: none;
-            font-size: 18px;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .whatsapp-link { color: #25d366; }
-        .facebook-link { color: #1877f2; }
-
-        .social-link:hover {
-            transform: scale(1.2);
-        }
-
-        .notice-box {
-            background: #ffffff;
-            margin: 15px 20px;
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px solid #ef4444;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            color: #1e293b;
-            text-align: center;
-        }
-
-        .notice-text {
-            line-height: 1.6;
-            margin: 0;
-            font-size: 14px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2; 
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            color: #475569;
-        }
-
-        .notice-text.expanded {
-            display: block;
-            overflow: visible;
-            color: #1a1a1a;
-        }
-
-        .read-more-btn {
-            color: #2563eb;
-            background: none;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            padding: 8px;
-            font-size: 14px;
-            text-decoration: underline;
-        }
-
-        .disagree-btn {
-            display: inline-block !important;
-            margin-top: 15px;
-            background: #ef4444 !important;
-            color: white !important;
-            padding: 10px 20px !important;
-            border-radius: 8px !important;
-            font-size: 14px !important;
-            text-decoration: none !important;
-            font-weight: bold !important;
-            border: none !important;
-            width: auto !important;
-            transition: 0.3s;
-            box-shadow: 0 2px 5px rgba(239, 68, 68, 0.3);
-        }
-
-        .disagree-btn:hover {
-            background: #dc2626 !important;
-            transform: scale(1.05);
-        }
-
-        .content {
-            display: flex; flex-direction: column; align-items: center; padding: 10px;
-        }
-
-        table {
-            background: white;
-            border-collapse: collapse;
-            width: 95%; max-width: 800px;
-            border: 3px solid #000; 
-            box-shadow: 6px 6px 0px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        th, td { border: 2px solid #000; padding: 12px; text-align: center; }
-
-        .table-title {
-            background: #2563eb;
-            color: white;
-            text-transform: uppercase;
-        }
-
-        tr:nth-child(even) { background-color: #f8fafc; }
-
-আপনার পরামর্শ অনুযায়ী কোডটি পরিবর্তন করে দিয়েছি। এখানে শুধু **`fa-exclamation-triangle`** (বিপদ সংকেত) আইকনটি পরিবর্তন করে **`fa-clock`** (ঘড়ি) আইকন বসানো হয়েছে। বাকি সব কিছু একদম আগের মতোই রাখা হয়েছে।
-
-নিচে আপনার সংশোধিত কোডটি দেওয়া হলো:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script async src="[https://www.googletagmanager.com/gtag/js?id=G-K79JSDSD3N](https://www.googletagmanager.com/gtag/js?id=G-K79JSDSD3N)"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K79JSDSD3N"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -256,7 +16,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>practicals - Final Version</title>
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @keyframes fadeInOut {
             0% { opacity: 0; transform: translateY(10px); }
@@ -537,11 +297,11 @@
     <!-- End of Support Section (বাংলা ভার্সন) -->
     <div class="eos-banner">
         <div class="eos-icon">
-            <i class="fas fa-clock"></i> <!-- আইকন এখানে পরিবর্তন করা হয়েছে -->
+            <i class="fas fa-exclamation-triangle"></i>
         </div>
         <div class="eos-content">
     <h4 style="color: #fca5a1; border-bottom: 1px solid rgba(252, 165, 161, 0.3); padding-bottom: 5px; margin-bottom: 10px;">
-        <i class="fas fa-heart"></i> This website has reached the end of support
+        <i class="fas fa-heart"></i> The Final Chapter: End of Service Notice
     </h4>
     <p>Every journey, no matter how beautiful, must reach its destination. As of <b>May 3, 2026</b>, this website has officially entered its final state. Maintenance and updates have been discontinued, and no further pdf files will be added or removed. This remains as the <b>Final Stable Version</b>.</p>
     
@@ -556,10 +316,10 @@
         <div class="title-text">DOWNLOAD PRACTICALS</div>
         <div class="subtitle-text">
             Developed by JUBAYER 
-            <a href="[https://wa.me/8801576470915](https://wa.me/8801576470915)" target="_blank" class="social-link whatsapp-link">
+            <a href="https://wa.me/8801576470915" target="_blank" class="social-link whatsapp-link">
                 <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="[https://www.facebook.com/profile.php?id=61580216250337](https://www.facebook.com/profile.php?id=61580216250337)" target="_blank" class="social-link facebook-link">
+            <a href="https://www.facebook.com/profile.php?id=61580216250337" target="_blank" class="social-link facebook-link">
                 <i class="fab fa-facebook"></i>
             </a>
         </div>
@@ -568,7 +328,7 @@
 
     <div class="content">
 	
-	<div><p style="color: #64748b;">Legacy Version • Last updated: 3 May 2026 (11:41 pm)</p></div>
+	<div><p style="color: #64748b;">Legacy Version • Last updated: 3 May 2026 (09:15 pm)</p></div>
 	
 	
         <table>
@@ -582,29 +342,29 @@
                 <tr>
                     <td><b>Biology 1st Paper</b></td>
                     <td style="display: flex; flex-direction: column; align-items: center;">
-                        <a href="[https://drive.google.com/file/d/1xqgOVxQUfNsTlo44uhQrNT5TtbHz_LmG/view?usp=sharing](https://drive.google.com/file/d/1xqgOVxQUfNsTlo44uhQrNT5TtbHz_LmG/view?usp=sharing)">Notebook PDF</a>
-                        <a href="[https://drive.google.com/drive/folders/1SNHx7AhNsWxh7JBfLGxECQW_-vaKO70H?usp=sharing](https://drive.google.com/drive/folders/1SNHx7AhNsWxh7JBfLGxECQW_-vaKO70H?usp=sharing)" style="background: #10b981 !important; border: 2px solid #000;">Experiment Photos</a>
+                        <a href="https://drive.google.com/file/d/1xqgOVxQUfNsTlo44uhQrNT5TtbHz_LmG/view?usp=sharing">Notebook PDF</a>
+                        <a href="https://drive.google.com/drive/folders/1SNHx7AhNsWxh7JBfLGxECQW_-vaKO70H?usp=sharing" style="background: #10b981 !important; border: 2px solid #000;">Experiment Photos</a>
                     </td>
                 </tr>
                 <tr>
                     <td><b>Biology 2nd Paper</b></td>
-                    <td><a href="[https://drive.google.com/file/d/11sP7RgXSf6KUtX7CY327TtFDQw76AEeV/view?usp=sharing](https://drive.google.com/file/d/11sP7RgXSf6KUtX7CY327TtFDQw76AEeV/view?usp=sharing)">Notebook PDF</a></td>
+                    <td><a href="https://drive.google.com/file/d/11sP7RgXSf6KUtX7CY327TtFDQw76AEeV/view?usp=sharing">Notebook PDF</a></td>
                 </tr>
                 <tr>
                     <td><b>Highermath 1st Paper</b></td>
                     <td>
                     <a href="ex10_watermark.pdf">Experiment 10 notebook pdf</a>
-                    <a href="[https://drive.google.com/file/d/1lw6EO45aDxCfeqM0aJZ2XftsKDuD-VjH/view?usp=sharing](https://drive.google.com/file/d/1lw6EO45aDxCfeqM0aJZ2XftsKDuD-VjH/view?usp=sharing)" style="background: #10b981 !important; border: 2px solid #000;">Experiments PDF</a></td>
+                    <a href="https://drive.google.com/file/d/1lw6EO45aDxCfeqM0aJZ2XftsKDuD-VjH/view?usp=sharing" style="background: #10b981 !important; border: 2px solid #000;">Experiments PDF</a></td>
                 </tr>
                 <tr>
                     <td><b>Highermath 2nd Paper</b></td>
                     <td>
-					<a href="[https://drive.google.com/file/d/1R7W6PktP3nAScNIRh1PvjZswwqLxcrv9/view?usp=sharing](https://drive.google.com/file/d/1R7W6PktP3nAScNIRh1PvjZswwqLxcrv9/view?usp=sharing)">Notebook PDF</a>
-					<a href="[https://jubayer0011.github.io/files/hm2nd.html](https://jubayer0011.github.io/files/hm2nd.html)" style="background: #10b981 !important; border: 2px solid #000;">Experiments PDF</a></td>
+					<a href="https://drive.google.com/file/d/1R7W6PktP3nAScNIRh1PvjZswwqLxcrv9/view?usp=sharing">Notebook PDF</a>
+					<a href="https://jubayer0011.github.io/files/hm2nd.html" style="background: #10b981 !important; border: 2px solid #000;">Experiments PDF</a></td>
                 </tr>
                 <tr>
                     <td><b>Chemistry 1st Paper</b></td>
-                    <td><a href="[https://drive.google.com/file/d/1WjrUPWFUmmATSqtLaGv3K7W-3w-Zogxm/view?usp=sharing](https://drive.google.com/file/d/1WjrUPWFUmmATSqtLaGv3K7W-3w-Zogxm/view?usp=sharing)">Notebook PDF</a></td>
+                    <td><a href="https://drive.google.com/file/d/1WjrUPWFUmmATSqtLaGv3K7W-3w-Zogxm/view?usp=sharing">Notebook PDF</a></td>
                 </tr>
                 <tr>
                     <td><b>Chemistry 2nd Paper</b></td>
@@ -613,20 +373,20 @@
                 <tr>
                     <td><b>Physics 1st Paper</b></td>
                     <td style="display: flex; flex-direction: column; align-items: center;">
-                        <a href="[https://drive.google.com/file/d/19njEQ92CWaVP4dFvrLqgzxCpeyeU5Hpo/view?usp=sharing](https://drive.google.com/file/d/19njEQ92CWaVP4dFvrLqgzxCpeyeU5Hpo/view?usp=sharing)">Notebook PDF</a>
-                        <a href="[https://drive.google.com/drive/folders/1Lav4HLz_zK8feQ6eKrrgyP5wl2_74Ro1?usp=sharing](https://drive.google.com/drive/folders/1Lav4HLz_zK8feQ6eKrrgyP5wl2_74Ro1?usp=sharing)" style="background: #10b981 !important; border: 2px solid #000;">Photos</a>
+                        <a href="https://drive.google.com/file/d/19njEQ92CWaVP4dFvrLqgzxCpeyeU5Hpo/view?usp=sharing">Notebook PDF</a>
+                        <a href="https://drive.google.com/drive/folders/1Lav4HLz_zK8feQ6eKrrgyP5wl2_74Ro1?usp=sharing" style="background: #10b981 !important; border: 2px solid #000;">Photos</a>
                     </td>
                 </tr>
                 <tr>
                     <td><b>Physics 2nd Paper</b></td>
                     <td style="display: flex; flex-direction: column; align-items: center;">
-                        <a href="[https://drive.google.com/file/d/1i2K5_nE88ssT30Xg_y_xuQN4fp6UB2G4/view?usp=sharing](https://drive.google.com/file/d/1i2K5_nE88ssT30Xg_y_xuQN4fp6UB2G4/view?usp=sharing)">Notebook PDF</a>
-                        <a href="[https://drive.google.com/file/d/1x7oVj5FUP563n-GDNLzok_3PiQvGNlbq/view?usp=sharing](https://drive.google.com/file/d/1x7oVj5FUP563n-GDNLzok_3PiQvGNlbq/view?usp=sharing)" style="background: #10b981 !important; border: 2px solid #000;">Experiments PDF</a>
+                        <a href="https://drive.google.com/file/d/1i2K5_nE88ssT30Xg_y_xuQN4fp6UB2G4/view?usp=sharing">Notebook PDF</a>
+                        <a href="https://drive.google.com/file/d/1x7oVj5FUP563n-GDNLzok_3PiQvGNlbq/view?usp=sharing" style="background: #10b981 !important; border: 2px solid #000;">Experiments PDF</a>
                     </td>
                 </tr>
                 <tr>
                     <td><b>ICT</b></td>
-                    <td><a href="[https://jubayer0011.github.io/files/](https://jubayer0011.github.io/files/)">Notebook PDF</a></td>
+                    <td><a href="https://jubayer0011.github.io/files/">Notebook PDF</a></td>
                 </tr>
             </tbody>
         </table>
@@ -634,19 +394,19 @@
         <div class="note" style="display: flex; flex-direction: column;">
             <div>
                 <b>Note:</b> 
-                <p>highermath 1st paper এর দশ নম্বর প্র্যাক্টিকাল এর প্রশ্নে সম্ভবত ভুল রয়েছে কেননা, ইন্টিগ্রেশনের লোয়ার লিমিট 0 দেওয়া হয়েছে। যেহেতু x = 0 বিন্দুতে ln(x) অসংজ্ঞায়িত (negative infty), তাই সাধারণ সাংখ্যিক পদ্ধতিতে এর মান বের করা সম্ভব নয়। কাজেই লোয়ার লিমিট ৫ ধরে সমাধান করেছি কেননা লোয়ার লিমিট ৫ হলে যে উত্তর আসে তা বইতে দেওয়া উত্তর এর সাথে মিলে যায়।</p> <hr style="display: flex; width: 100%;">
+                <p>highermath 1st paper এর দশ নম্বর প্র্যাক্টিকাল এর প্রশ্নে সম্ভবত ভুল রয়েছে কেননা, ইন্টিগ্রেশনের লোয়ার লিমিট 0 দেওয়া হয়েছে। যেহেতু x = 0 বিন্দুতে ln(x) অসংজ্ঞায়িত (negative infty), তাই সাধারণ সাংখ্যিক পদ্ধতিতে এর মান বের করা সম্ভব নয়। কাজেই লোয়ার লিমিট ৫ ধরে সমাধান করেছি কেননা লোয়ার লিমিট ৫ হলে যে উত্তর আসে তা বইতে দেওয়া উত্তর এর সাথে মিলে যায়।</p> <hr style="display: flex; width: 100%;">
 				<p>Highermath 2nd paper এর ইনডেক্স এবং ডেট দেখতে <a class="extra-a" href="highermath_2nd_index.jpeg"> এখানে </a> ক্লিক করো। </p> <hr style="display: flex; width: 100%;">
 				<p>physics এর ইনডেক্স এবং ডেট দেখতে <a class="extra-a" href="physics_index.jpeg"> এখানে </a> ক্লিক করো। </p> <hr style="display: flex; width: 100%;">
                 <p>biology 1st পেপার এর 'notebook pdf' এ Agaricus,pteris - এই এক্সপেরিমেন্টগুলো নেই।</p> <hr style="display: flex; width: 100%;">
-                <p>রসায়ন ১ম পত্রের experiment এর নাম ও চিত্রের জন্য <a class="extra-a" href="[https://drive.google.com/file/d/1dGj_7wn50oFNqTjLXUu-BYSVIJp-rxwk/view?usp=sharing](https://drive.google.com/file/d/1dGj_7wn50oFNqTjLXUu-BYSVIJp-rxwk/view?usp=sharing)" target="_blank">এখানে ক্লিক করো</a>।<p>
+                <p>রসায়ন ১ম পত্রের experiment এর নাম ও চিত্রের জন্য <a class="extra-a" href="https://drive.google.com/file/d/1dGj_7wn50oFNqTjLXUu-BYSVIJp-rxwk/view?usp=sharing" target="_blank">এখানে ক্লিক করো</a>।<p>
             </div>
         </div>
     </div>
 
     <footer>
-        <div style="margin-bottom: 12px; font-weight: 300; font-size: 13px; color: #9ca3af;">Support Status: Ended </div>
-        <a href="[https://jubayer0011.github.io/aboutme/](https://jubayer0011.github.io/aboutme/)" target="_blank" class="footer-link">Developed by JUBAYER</a>
-        <div class="copyright">এই ওয়েবসাইট এবং এর সাথে সংশ্লিষ্ট সকল প্ল্যাটফর্মে প্রকাশিত যাবতীয় কন্টেন্ট (পিডিএফ, ছবি বা অন্যান্য ফাইল) সম্পূর্ণ ব্যক্তিগত উদ্যোগে জনস্বার্থে শেয়ার করা হয়েছে। এখানে প্রদত্ত তথ্যের নির্ভুলতা সম্পর্কে ডেভেলপার (Jubayer) কোনো নিশ্চয়তা প্রদান করে না। কন্টেন্টসমূহ ব্যবহারের ফলে কোনো প্রকার ভুল বা ক্ষয়ক্ষতির জন্য ডেভেলপার কোনোভাবেই দায়ী থাকবে না। এই ওয়েবসাইটের যেকোনো তথ্য বা ফাইল ব্যবহারকারীর নিজ দায়িত্বে ব্যবহারের অনুরোধ করা হলো। এই প্ল্যাটফর্মটি ব্যবহারের মাধ্যমে আপনি এই শর্তাবলির সাথে একমত পোষণ করছেন।
+        <div style="margin-bottom: 12px; font-weight: 300; font-size: 13px; color: #9ca3af;">Support Status: End of Life Cycle</div>
+        <a href="https://jubayer0011.github.io/aboutme/" target="_blank" class="footer-link">Developed by JUBAYER</a>
+        <div class="copyright">এই ওয়েবসাইট এবং এর সাথে সংশ্লিষ্ট সকল প্ল্যাটফর্মে প্রকাশিত যাবতীয় কন্টেন্ট (পিডিএফ, ছবি বা অন্যান্য ফাইল) সম্পূর্ণ ব্যক্তিগত উদ্যোগে জনস্বার্থে শেয়ার করা হয়েছে। এখানে প্রদত্ত তথ্যের নির্ভুলতা সম্পর্কে ডেভেলপার (Jubayer) কোনো নিশ্চয়তা প্রদান করে না। কন্টেন্টসমূহ ব্যবহারের ফলে কোনো প্রকার ভুল বা ক্ষয়ক্ষতির জন্য ডেভেলপার কোনোভাবেই দায়ী থাকবে না। এই ওয়েবসাইটের যেকোনো তথ্য বা ফাইল ব্যবহারকারীর নিজ দায়িত্বে ব্যবহারের অনুরোধ করা হলো। এই প্ল্যাটফর্মটি ব্যবহারের মাধ্যমে আপনি এই শর্তাবলির সাথে একমত পোষণ করছেন।
         </p></div>
     </footer>
 
@@ -671,7 +431,7 @@
         const messages = ["I'm so in love with you...", "You can ask the flowers, I sit for hours", "Everything belongs to you...", "Your eyes: A beautiful place to get lost."];
 
         window.onload = function() {
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            const randomMessage = messages[Math.floor(Math.ranadom() * messages.length)];
             const loadingTextElement = document.getElementById('loading-text');
             if (loadingTextElement) loadingTextElement.innerText = randomMessage;
 
